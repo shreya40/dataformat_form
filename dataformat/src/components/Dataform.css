@@ -15,3 +15,9 @@
   padding: 20px;
   
 }
+.submitButton{
+    background-color:#a7a7a7 ;
+    width: fit-content;
+    padding: 8px;
+    width: 100px;
+}
