@@ -7,6 +7,7 @@ function Dataform() {
   //   const [fastPDirectory, setfastPDirectory] = useState("");
   const [sampleinput, setSampleInput] = useState("");
   const [sampleinputtype, setSampleInputType] = useState("");
+  const [handleSubmit, sethandleSubmit] = useState("");
   return (
     <div className="outerdiv">
       <div className="dataform">
@@ -90,6 +91,14 @@ function Dataform() {
             onChange={(event) => setfastPDirectory(event.target.value)}
           />
         </div> */}
+        <button
+          className="submitButton"
+          type="submit"
+          value={handleSubmit}
+          onClick={() => sethandleSubmit()}
+        >
+          SUBMIT
+        </button>
       </div>
     </div>
   );
