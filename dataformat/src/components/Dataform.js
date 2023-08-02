@@ -5,7 +5,8 @@ function Dataform() {
   const [inputDirectory, setInputDirectory] = useState("");
   //   const [qualityCheckDirectory, setQualityDirectory] = useState("");
   //   const [fastPDirectory, setfastPDirectory] = useState("");
-
+  const [sampleinput, setSampleInput] = useState("");
+  const [sampleinputtype, setSampleInputType] = useState("");
   return (
     <div className="outerdiv">
       <div className="dataform">
@@ -20,7 +21,10 @@ function Dataform() {
             value={inputDirectory}
             onChange={(event) => setInputDirectory(event.target.value)}
           /> */}
-          <select>
+          <select
+            value={sampleinput}
+            onChange={(event) => setSampleInput(event.target.value)}
+          >
             <option value="hg38">Germline</option>
             <option value="hg19">Somatic</option>
           </select>
@@ -33,7 +37,10 @@ function Dataform() {
             value={inputDirectory}
             onChange={(event) => setInputDirectory(event.target.value)}
           /> */}
-          <select>
+          <select
+            value={sampleinputtype}
+            onChange={(event) => setSampleInputType(event.target.value)}
+          >
             <option value="hg38">hg38</option>
             <option value="hg19">hg19</option>
           </select>
