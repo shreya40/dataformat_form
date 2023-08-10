@@ -39,10 +39,10 @@ const { exec } = require('child_process');
 //   });
 // });
 
-router.post('/run-script3', (req, res) => {
-
-  const { inputDir, dir_qc } = req.body; 
-  console.log({inputDir});
+router.post('/run-script3',async  (req, res) => {
+  console.log('Request Body:', req.body);
+  const { inputDir, dir_qc } = req.body;
+  console.log(inputDir);
   const scriptPath = `bash C:/Users/alish/Downloads/genomiki2/public/test3.sh "${inputDir}" "${dir_qc}"`;
   console.log('Executing script: ', scriptPath); 
   exec(scriptPath, (error, stdout, stderr) => {

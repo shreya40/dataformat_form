@@ -2,13 +2,31 @@ import React from "react";
 import { useState } from "react";
 import "./Dataform.css";
 function Dataform() {
-  const [inputDirectory, setInputDirectory] = useState("");
+  const [inputDir, setInputDir] = useState("");
   //   const [qualityCheckDirectory, setQualityDirectory] = useState("");
   //   const [fastPDirectory, setfastPDirectory] = useState("");
   const [sampleinput, setSampleInput] = useState("");
   const [sampleinputtype, setSampleInputType] = useState("");
-  const [handleSubmit, sethandleSubmit] = useState("");
+
+  
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('Input Dir:', inputDir);
+    
+    const data = {
+      inputDir, dir_qc: "path2"
+    };
+      const response = await fetch('/cmd/run-script3', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+      body: JSON.stringify(data) 
+    });
+    console.log(response);
+  }
   return (
+    <form onSubmit={handleSubmit}>
     <div className="outerdiv">
       <div className="dataform">
         <h1 style={{ textAlign: "center" }}>
@@ -51,8 +69,8 @@ function Dataform() {
           <input
             type="path"
             id="input directory"
-            value={inputDirectory}
-            onChange={(event) => setInputDirectory(event.target.value)}
+            value={inputDir}
+            onChange={(event) => setInputDir(event.target.value)}
           />
         </div>
         {/* <div className="dataform_inputcolum">
@@ -90,17 +108,19 @@ function Dataform() {
             value={fastPDirectory}
             onChange={(event) => setfastPDirectory(event.target.value)}
           />
-        </div> */}
-        <button
-          className="submitButton"
-          type="submit"
-          value={handleSubmit}
-          onClick={() => sethandleSubmit()}
+        </div> */
+        }
+        <button 
+        className="submitButton"
+        type="submit"
+        onClick={handleSubmit}  
         >
-          SUBMIT
+        Submit
         </button>
       </div>
     </div>
-  );
+    </form>
+    );
 }
+
 export default Dataform;
